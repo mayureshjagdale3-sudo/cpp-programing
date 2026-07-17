@@ -10,8 +10,8 @@ int main() {
     cout << "Enter width: ";
     cin >> width;
 
-    area = length * width;
-    perimeter = 2 * (length + width);
+    area = length * width;//rectangle area formula
+    perimeter = 2 * (length + width);//rectangle perimeter formula
 
     cout << "Area of Rectangle = " << area << endl;
     cout << "Perimeter of Rectangle = " << perimeter << endl;
