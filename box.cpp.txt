@@ -1,0 +1,54 @@
+
+#include <iostream>
+using namespace std;
+
+class Box {
+    double length, width, height;
+
+public:
+    Box() : length(1), width(1), height(1) {
+        cout << "Default constructor called.\n";
+    }
+
+    Box(double l, double w, double h)
+        : length(l), width(w), height(h) {
+        cout << "Parameterized constructor called.\n";
+    }
+
+    Box(const Box &b)
+        : length(b.length), width(b.width), height(b.height) {
+        cout << "Copy constructor called.\n";
+    }
+
+    double volume() {
+        return length * width * height;
+    }
+
+    void display() {
+        cout << "Length: " << length << endl;
+        cout << "Width: " << width << endl;
+        cout << "Height: " << height << endl;
+        cout << "Volume: " << volume() << endl;
+    }
+
+    ~Box() {
+        cout << "Box object destroyed.\n";
+    }
+};
+
+int main() {
+    Box b1;
+    Box b2(2, 3, 4);
+    Box b3(b2);
+
+    cout << "\nBox 1:\n";
+    b1.display();
+
+    cout << "\nBox 2:\n";
+    b2.display();
+
+    cout << "\nBox 3:\n";
+    b3.display();
+
+    return 0;
+}

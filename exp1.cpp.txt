@@ -1,0 +1,36 @@
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string name;
+    int units;
+    double bill;
+
+    cout << "Enter consumer name: ";
+    getline(cin, name);
+
+    cout << "Enter units consumed: ";
+    cin >> units;
+
+    if (units < 0) {
+        cout << "Invalid units";
+        return 0;
+    }
+
+    if (units <= 100)
+        bill = units * 5;
+    else if (units <= 200)
+        bill = units * 7;
+    else if (units <= 300)
+        bill = units * 10;
+    else
+        bill = units * 12;
+
+    cout << "\nConsumer Name: " << name << endl;
+    cout << "Units Consumed: " << units << endl;
+    cout << "Electricity Bill: Rs. " << bill << endl;
+
+    return 0;
+}

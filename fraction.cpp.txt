@@ -1,0 +1,79 @@
+
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+int gcd(int a, int b) {
+    a = abs(a);
+    b = abs(b);
+
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
+class Fraction {
+    int num, den;
+
+public:
+    void accept() {
+        cout << "Enter numerator and denominator: ";
+        cin >> num >> den;
+    }
+
+    void display() {
+        if (den == 0) {
+            cout << "Invalid fraction\n";
+            return;
+        }
+
+        int g = gcd(num, den);
+        int n = num / g;
+        int d = den / g;
+
+        if (d < 0) {
+            n = -n;
+            d = -d;
+        }
+
+        cout << n << "/" << d << endl;
+    }
+
+    Fraction add(Fraction f) {
+        Fraction r;
+        r.num = num * f.den + f.num * den;
+        r.den = den * f.den;
+        return r;
+    }
+
+    Fraction subtract(Fraction f) {
+        Fraction r;
+        r.num = num * f.den - f.num * den;
+        r.den = den * f.den;
+        return r;
+    }
+};
+
+int main() {
+    Fraction f1, f2, sum, diff;
+
+    cout << "First fraction:\n";
+    f1.accept();
+
+    cout << "Second fraction:\n";
+    f2.accept();
+
+    sum = f1.add(f2);
+    diff = f1.subtract(f2);
+
+    cout << "Sum: ";
+    sum.display();
+
+    cout << "Difference: ";
+    diff.display();
+
+    return 0;
+}

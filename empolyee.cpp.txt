@@ -1,0 +1,50 @@
+//cin.ignore() removes the leftover newline after reading the employee ID. 
+//This allows getline() to read the full employee name correctly.
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Employee {
+    int employeeID;
+    string employeeName;
+    string department;
+    float basicSalary;
+
+public:
+    void accept() {
+        cout << "Enter Employee ID: ";
+        cin >> employeeID;
+        cin.ignore();
+
+        cout << "Enter Employee Name: ";
+        getline(cin, employeeName);
+
+        cout << "Enter Department: ";
+        getline(cin, department);
+
+        cout << "Enter Basic Salary: ";
+        cin >> basicSalary;
+    }
+
+    float calculateAnnualSalary() {
+        return basicSalary * 12;
+    }
+
+    void display() {
+        cout << "\nEmployee Information\n";
+        cout << "Employee ID: " << employeeID << endl;
+        cout << "Employee Name: " << employeeName << endl;
+        cout << "Department: " << department << endl;
+        cout << "Basic Salary: " << basicSalary << endl;
+        cout << "Annual Salary: "
+             << calculateAnnualSalary() << endl;
+    }
+};
+
+int main() {
+    Employee e;
+    e.accept();
+    e.display();
+
+    return 0;
+}

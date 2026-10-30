@@ -1,0 +1,49 @@
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Product {
+    int productID;
+    string productName;
+    int quantity;
+    float unitPrice;
+
+public:
+    void accept() {
+        cout << "Enter Product ID: ";
+        cin >> productID;
+        cin.ignore();
+
+        cout << "Enter Product Name: ";
+        getline(cin, productName);
+
+        cout << "Enter Quantity: ";
+        cin >> quantity;
+
+        cout << "Enter Unit Price: ";
+        cin >> unitPrice;
+    }
+
+    float calculateTotalCost() {
+        return quantity * unitPrice;
+    }
+
+    void display() {
+        cout << "\nProduct Information\n";
+        cout << "Product ID: " << productID << endl;
+        cout << "Product Name: " << productName << endl;
+        cout << "Quantity: " << quantity << endl;
+        cout << "Unit Price: " << unitPrice << endl;
+        cout << "Total Cost: "
+             << calculateTotalCost() << endl;
+    }
+};
+
+int main() {
+    Product p;
+    p.accept();
+    p.display();
+
+    return 0;
+}

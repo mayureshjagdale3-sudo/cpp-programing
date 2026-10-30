@@ -1,0 +1,42 @@
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Employee {
+    int id;
+    string name;
+    double basic, hra, da;
+
+public:
+    Employee(int i, string n, double b, double h, double d) {
+        id = i;
+        name = n;
+        basic = b;
+        hra = h;
+        da = d;
+    }
+
+    double grossSalary() {
+        return basic + hra + da;
+    }
+
+    void display() {
+        cout << "Employee ID: " << id << endl;
+        cout << "Name: " << name << endl;
+        cout << "Basic Salary: " << basic << endl;
+        cout << "HRA: " << hra << endl;
+        cout << "DA: " << da << endl;
+        cout << "Gross Salary: " << grossSalary() << endl;
+    }
+
+    ~Employee() {
+        cout << "Employee object destroyed.\n";
+    }
+};
+
+int main() {
+    Employee e(101, "Samruddhi", 25000, 5000, 3000);
+    e.display();
+    return 0;
+}

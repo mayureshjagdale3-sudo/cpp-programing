@@ -1,0 +1,68 @@
+
+#include <iostream>
+using namespace std;
+
+class Matrix {
+    int a[2][2];
+
+public:
+    friend istream& operator>>(istream& in, Matrix& m) {
+        for (int i = 0; i < 2; i++)
+            for (int j = 0; j < 2; j++)
+                in >> m.a[i][j];
+        return in;
+    }
+
+    friend ostream& operator<<(ostream& out, const Matrix& m) {
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++)
+                out << m.a[i][j] << " ";
+            out << endl;
+        }
+        return out;
+    }
+
+    Matrix operator+(const Matrix& m) {
+        Matrix r;
+        for (int i = 0; i < 2; i++)
+            for (int j = 0; j < 2; j++)
+                r.a[i][j] = a[i][j] + m.a[i][j];
+        return r;
+    }
+
+    Matrix operator-(const Matrix& m) {
+        Matrix r;
+        for (int i = 0; i < 2; i++)
+            for (int j = 0; j < 2; j++)
+                r.a[i][j] = a[i][j] - m.a[i][j];
+        return r;
+    }
+
+    bool operator==(const Matrix& m) const {
+        for (int i = 0; i < 2; i++)
+            for (int j = 0; j < 2; j++)
+                if (a[i][j] != m.a[i][j])
+                    return false;
+        return true;
+    }
+};
+
+int main() {
+    Matrix m1, m2;
+
+    cout << "Enter 4 elements of first 2x2 matrix: ";
+    cin >> m1;
+
+    cout << "Enter 4 elements of second 2x2 matrix: ";
+    cin >> m2;
+
+    cout << "\nAddition:\n" << m1 + m2;
+    cout << "\nSubtraction:\n" << m1 - m2;
+
+    if (m1 == m2)
+        cout << "Matrices are equal.\n";
+    else
+        cout << "Matrices are not equal.\n";
+
+    return 0;
+}

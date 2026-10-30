@@ -1,0 +1,45 @@
+/*A class is a user-defined data type that groups data members and member functions together.
+A class is a blueprint for creating objects.
+An object is an instance of a class. For example, Student s; creates an object named s.
+Data members are variables declared inside a class, such as name, rollNumber, and marks.
+Member functions are functions declared inside a class that perform operations on its data.
+Encapsulation is the process of combining data and functions into a single unit, such as a class, 
+    and controlling access to the data.
+public: It allows the specified class members to be accessed from outside the class.
+*/
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Student {
+    string name;
+    int rollNumber;
+    float marks;
+
+public:
+    void accept() {
+        cout << "Enter student name: ";
+        getline(cin, name);
+
+        cout << "Enter roll number: ";
+        cin >> rollNumber;
+
+        cout << "Enter marks: ";
+        cin >> marks;
+    }
+
+    void display() {
+        cout << "\nStudent Information\n";
+        cout << "Name: " << name << endl;
+        cout << "Roll Number: " << rollNumber << endl;
+        cout << "Marks: " << marks << endl;
+    }
+};
+
+int main() {
+    Student s;
+    s.accept();
+    s.display();
+
+    return 0;
+}
